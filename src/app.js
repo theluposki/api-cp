@@ -25,4 +25,4 @@ app.use("/", Home)
 app.use("/user", User)
 
 /** Listen */
-app.listen(3001, console.log("[ App ] running at 127.0.0.1:3001"))
+app.listen(process.env.PORT, console.log(`[ App ] running at ${process.env.HOST}:${process.env.PORT}`))
