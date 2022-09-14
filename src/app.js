@@ -22,7 +22,7 @@ app.use(helmet())
 app.use(compression())
 
 app.use("/", Home)
-app.use("/user", User)
+app.use("/users", User)
 
 /** Listen */
 app.listen(process.env.PORT, console.log(`[ App ] running at ${process.env.HOST}:${process.env.PORT}`))
