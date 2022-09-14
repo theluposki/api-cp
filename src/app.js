@@ -9,6 +9,7 @@ import helmet from "helmet"
 
 /** import routes */
 import Home from "./router/home.js"
+import User from "./router/User.js"
 
 /** instancia server */
 const app = express()
@@ -21,12 +22,7 @@ app.use(helmet())
 app.use(compression())
 
 app.use("/", Home)
-
-/** error middlewarer */
-app.use((error, req,res,next) => {
-  console.log(error)
-  return res.status(500).json({  error: "[ ERROR ] error authenticating" })
-})
+app.use("/user", User)
 
 /** Listen */
 app.listen(3001, console.log("[ App ] running at 127.0.0.1:3001"))
