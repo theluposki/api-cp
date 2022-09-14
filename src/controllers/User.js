@@ -3,13 +3,13 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 export const User = {
-  async auth(req,res) {
+  async auth(req, res) {
     const { email, password } = req.body
 
     try {
       const existingUser = await ModelUser.findOne({ email }).select("+password")
 
-      if(!existingUser){
+      if (!existingUser) {
         return res.status(400).json({ error: "Invalid username or password" })
       }
 
@@ -19,7 +19,7 @@ export const User = {
 
       const token = await jwt.sign({
         id: existingUser._id,
-        rules: existingUser.rules 
+        rules: existingUser.rules
       }, process.env.SECRET, {
         expiresIn: 86400
       })
@@ -57,7 +57,7 @@ export const User = {
       return res.status(400).json(error)
     }
   },
-  async readOneId(req,res) {
+  async readOneId(req, res) {
     try {
       const id = req.params.id
 
@@ -67,7 +67,7 @@ export const User = {
       return res.status(400).json(error)
     }
   },
-  async updateOneId(req, res){
+  async updateOneId(req, res) {
     try {
       const user = await ModelUser.findByIdAndUpdate({ _id: req.params.id }, req.body)
       return res.status(200).json(user)
@@ -75,7 +75,7 @@ export const User = {
       return res.status(400).json(error)
     }
   },
-  async deleteOneId(req, res){
+  async deleteOneId(req, res) {
     try {
       const user = await ModelUser.findByIdAndRemove({ _id: req.params.id })
       return res.status(200).json(user._id)
