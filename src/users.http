@@ -1,0 +1,44 @@
+
+### GET /users
+GET http://localhost:3001/users HTTP/1.1
+
+
+### GET /users/:id
+GET http://localhost:3001/users/6321aa9286016c714a839149 HTTP/1.1
+
+
+### Post /users
+POST http://localhost:3001/users HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Marcela", 
+    "nickName":"marce", 
+    "email":"mama@mail.com", 
+    "password":"123456789"
+}
+### PUT /users/:id
+PUT http://localhost:3001/users/63236ee9419d5acf24acf56e HTTP/1.1  
+content-type: application/json
+
+{
+    "name":"Monique Geovana Marques Albuquerque", 
+    "nickName":"nini", 
+    "email":"nini@mail.com", 
+    "password":"123456789"
+}
+
+### DELETE /users/:id
+DELETE http://localhost:3001/users/63236ff3419d5acf24acf578 HTTP/1.1  
+### POST /users/auth
+POST http://localhost:3001/users/auth 
+content-type: application/json
+
+{
+    "email":"lu@mail.com", 
+    "password":"12345678"
+}
+###
+
+
+
