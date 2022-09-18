@@ -1,5 +1,9 @@
+@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjFhYTkyODYwMTZjNzE0YTgzOTE0OSIsInJ1bGVzIjpbInVzZXIiXSwiaWF0IjoxNjYzNDQ4MzEzLCJleHAiOjE2NjM1MzQ3MTN9.yA7pPXznqquF2fvWaOClGVd1lRvy2s31dC4lYz_j17M
+@host = http://localhost
+@port = 3001
+@endpoint = /users
 
-
+@url = {{host}}:{{port}}{{endpoint}}
 
 ### Post /users CREATE Criação de Usuário.
 POST http://localhost:3001/users HTTP/1.1
@@ -12,19 +16,19 @@ content-type: application/json
     "password":"123456789"
 }
 ### GET /users READ Lista todos os Usuários.
-GET http://localhost:3001/users HTTP/1.1
-
+GET {{url}} HTTP/1.1
+Authorization: Bearer {{auth}}
 
 
 
 ### GET /users/:id READ Only Lista um Usuário por ID.
-GET http://localhost:3001/users/6321aa9286016c714a839149 HTTP/1.1
+GET {{url}}/6321aa9286016c714a839149 HTTP/1.1
 
 
 
 
 ### PUT /users/:id UPDATE Only por ID.
-PUT http://localhost:3001/users/63236ee9419d5acf24acf56e HTTP/1.1  
+PUT {{url}}/63236ee9419d5acf24acf56e HTTP/1.1  
 content-type: application/json
 
 {
@@ -37,11 +41,11 @@ content-type: application/json
 
 
 ### DELETE /users/:id DELETE Only por ID.
-DELETE http://localhost:3001/users/63236ff3419d5acf24acf578 HTTP/1.1  
+DELETE {{url}}/63236ff3419d5acf24acf578 HTTP/1.1  
 
 
 ### POST /users/auth AUTH Autentica o Usuário.
-POST http://localhost:3001/users/auth 
+POST {{url}}/auth 
 content-type: application/json
 
 {
