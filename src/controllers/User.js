@@ -10,11 +10,11 @@ export const User = {
       const existingUser = await ModelUser.findOne({ email }).select("+password")
 
       if (!existingUser) {
-        return res.status(400).json({ error: "Invalid username or password" })
+        return res.status(400).json({ error: "Usuário não encontrado." })
       }
 
       if (!(await bcrypt.compare(password, existingUser.password))) {
-        return res.status(400).json({ error: "Invalid username or password" })
+        return res.status(400).json({ error: "Senha inválida." })
       }
 
       const token = await jwt.sign({
@@ -30,7 +30,7 @@ export const User = {
       })
 
     } catch (error) {
-      res.status(400).json(error)
+      res.status(400).json({ error: "Não foi posível se autenticar."})
     }
   },
   async createUser(req, res) {
