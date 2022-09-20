@@ -15,7 +15,7 @@ export const Login  = {
           <input v-model="password" type="password" placeholder="digite sua senha"/>
           <span :class="classPasswordMessage">{{ validPassword }}</span>
         </div>
-
+        <span class="messagem-login" v-if="$store.state.user !== null">{{ $store.state.user.msg }}</span>
         <div class="form-controll">
           <button type="submit" @click.prevent="logar()">Entrar</button>
         </div>
@@ -43,7 +43,9 @@ export const Login  = {
         email: this.email,
         password: this.password
       }).then((data) => {
-        console.table(data.data)
+        this.$store.commit('logar', data.data)
+        localStorage.setItem('user', JSON.stringify(data.data))
+        this.$router.push('/')
       }).catch((error) => {
 
         if(error.response) {
