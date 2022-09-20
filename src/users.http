@@ -1,4 +1,4 @@
-@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjFhYTkyODYwMTZjNzE0YTgzOTE0OSIsInJ1bGVzIjpbInVzZXIiXSwiaWF0IjoxNjYzNDQ4MzEzLCJleHAiOjE2NjM1MzQ3MTN9.yA7pPXznqquF2fvWaOClGVd1lRvy2s31dC4lYz_j17M
+@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjFhYTkyODYwMTZjNzE0YTgzOTE0OSIsInJ1bGVzIjpbInVzZXIiXSwiaWF0IjoxNjYzNzE3MjcwLCJleHAiOjE2NjM4MDM2NzB9.fhJLHjj8ObqxF2h1tAhgAF4SCvzFZzaPuvPOTrx7Nro
 @host = http://localhost
 @port = 3001
 @endpoint = /users
@@ -31,13 +31,14 @@ GET {{url}}/6321aa9286016c714a839149 HTTP/1.1
 PUT {{url}}/63236ee9419d5acf24acf56e HTTP/1.1  
 content-type: application/json
 
-{
+{   
     "name":"Monique Geovana Marques de Albuquerque", 
     "nickName":"nini", 
     "email":"nini@mail.com", 
-    "password":"123456789"
-}
+    "password":"123456789",
+    "urlProfileImg":"https://i.pravatar.cc/150?img=26"
 
+}
 
 
 ### DELETE /users/:id DELETE Only por ID.

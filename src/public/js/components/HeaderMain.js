@@ -10,8 +10,9 @@ export const HeaderMain = {
     </div>
 
     <div class="session-user">
-      <h3>Luposki</h3>
-      <img src="https://i.pravatar.cc/150?img=14" alt="Photo profile"/>
+      <h3 v-if="$store.state.dataUser">{{ $store.state.dataUser.nickName }}</h3>
+      <img v-if="$store.state.dataUser" :src="$store.state.dataUser.urlProfileImg" alt="Photo profile"/>
+      <img v-else src="https://i.pravatar.cc/150?img=14" alt="Photo profile"/>
       <i class="ai-more-vertical-fill"></i>
     </div>
 
@@ -22,12 +23,27 @@ export const HeaderMain = {
     </div>
   </header>
   `,
+  mounted(){
+    this.getInfoUser()
+  },
   data() {
     return {
       
     }
   },
   methods: {
+    getInfoUser(){
+      const id  = this.$store.state.user.id
+      axios.get(`/users/${id}`).then((data) => {
+        console.log(data.data)
+        this.$store.commit('setDataUser', data.data)
+      }).catch((error) => {
+        if(error.response) {
+          let err = error.response.data.error
+          console.log(err)
+        }
+      })
+    },
     logout() {
       localStorage.removeItem('user')
       this.$store.commit('logout')

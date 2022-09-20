@@ -26,7 +26,8 @@ export const User = {
 
       return res.status(200).json({
         token,
-        msg: "Autenticado com sucesso!"
+        msg: "Autenticado com sucesso!",
+        id: existingUser._id
       })
 
     } catch (error) {
@@ -64,7 +65,7 @@ export const User = {
       const user = await ModelUser.findById({ _id: id })
       return res.status(200).json(user)
     } catch (error) {
-      return res.status(400).json(error)
+      return res.status(400).json({error: "Não foi posível  buscar seus dados."})
     }
   },
   async updateOneId(req, res) {
