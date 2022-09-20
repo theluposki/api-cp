@@ -7,6 +7,9 @@ export const store = Vuex.createStore({
   mutations: {
     logar(state, payload) {
       state.user = payload
-    }
+    },
+    logout(state, payload) {
+      state.user = null
+    },
   }
 })

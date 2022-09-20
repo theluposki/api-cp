@@ -10,8 +10,8 @@
     </head>
     <body>
       <div id="app">
-        <Header-Main></Header-Main>
-        <Navigation></Navigation>
+        <Header-Main v-if="$store.state.user"></Header-Main>
+        <Navigation v-if="$store.state.user"></Navigation>
         <router-view class="main"></router-view>
       </div>
 

@@ -15,17 +15,27 @@ const app = Vue.createApp({
     Navigation
   },
   mounted(){
-    if(localStorage.getItem('user')) {
-      this.$store.commit('logar', JSON.parse(localStorage.getItem('user')))
-      this.$router.push('/')
-    } else {
-      this.$router.push('/Login')
-    }
+    this.isLoggedIn()
   },
   data(){
     return {
       title: "MyApp Vue =D"
     }
+  },
+  methods: {
+    isLoggedIn() {
+      
+      if(localStorage.getItem('user')) {
+        const parts = JSON.parse(localStorage.getItem('user'))
+
+        if(parts.token && parts.msg) {
+          this.$store.commit('logar', JSON.parse(localStorage.getItem('user')))
+          this.$router.push('/')
+        }
+      } else {
+        this.$router.push('/Login')
+      }
+    },
   }
 });
 
