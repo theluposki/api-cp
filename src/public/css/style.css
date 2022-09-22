@@ -214,7 +214,7 @@ hr {
 }
 
 .profile-configs .pc-name {
-
+  line-height: 0.7;
 }
 
 .profile-configs .pc-email {

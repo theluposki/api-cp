@@ -1,6 +1,6 @@
 export const HeaderMain = {
-  template: 
-  `
+  template:
+    `
   <header class="header-main">
     <div class="logo">
       <router-link to="/">
@@ -18,7 +18,7 @@ export const HeaderMain = {
 
     <div class="profile-configs">
       <div v-if="$store.state.dataUser">
-        <h2 class="pc-name">{{ $store.state.dataUser.name }}</h2>
+        <h2 class="pc-name"><i class="ai-person"></i>{{ $store.state.dataUser.name }}</h2>
         <span class="pc-email">{{ $store.state.dataUser.email }}</span>
       </div>
       <div class="logout">
@@ -27,26 +27,25 @@ export const HeaderMain = {
     </div>
   </header>
   `,
-  mounted(){
+  mounted() {
     this.getInfoUser()
   },
   data() {
     return {
-      
+
     }
   },
   methods: {
     showProfileConfigs() {
-        const profileConfigs = document.querySelector(".profile-configs")
-        profileConfigs.classList.toggle("show-pc")
+      const profileConfigs = document.querySelector(".profile-configs")
+      profileConfigs.classList.toggle("show-pc")
     },
-    getInfoUser(){
-      const id  = this.$store.state.user.id
+    getInfoUser() {
+      const id = this.$store.state.user.id
       axios.get(`/users/${id}`).then((data) => {
-        console.log(data.data)
         this.$store.commit('setDataUser', data.data)
       }).catch((error) => {
-        if(error.response) {
+        if (error.response) {
           let err = error.response.data.error
           console.log(err)
         }
