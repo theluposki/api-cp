@@ -11,8 +11,10 @@
     <body>
       <div id="app">
         <Header-Main v-if="$store.state.user"></Header-Main>
-        <Navigation v-if="$store.state.user"></Navigation>
-        <router-view class="main"></router-view>
+        <div class="container-nav-main">
+          <Navigation v-if="$store.state.user"></Navigation>
+          <router-view class="main"></router-view>
+        </div>
       </div>
 
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

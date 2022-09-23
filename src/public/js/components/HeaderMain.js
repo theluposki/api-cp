@@ -22,7 +22,7 @@ export const HeaderMain = {
         <span class="pc-email">{{ $store.state.dataUser.email }}</span>
       </div>
       <div class="logout">
-        <button @click="logout()">Sair</button>
+        <button class="btn" @click="logout()">Sair</button>
       </div>
     </div>
   </header>

@@ -17,7 +17,7 @@ export const Login  = {
         </div>
         <span class="messagem-login" v-if="$store.state.user !== null">{{ $store.state.user.msg }}</span>
         <div class="form-controll">
-          <button type="submit" @click.prevent="logar()">Entrar</button>
+          <button class="btn" type="submit" @click.prevent="logar()">Entrar</button>
         </div>
       </form>
     </div>
